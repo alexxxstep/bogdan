@@ -30,16 +30,14 @@ words = 'вход рыба'
 
 print(words.upper())
 
-print('='*20)
+print('='*50)
 
 w_dic = {}
 
 for w in words.split():
-    #   w_dic[w] = random.shuffle(w)
-    # print(w)
     w_letters = list(w)
     random.shuffle(w_letters)
-    # print(w_letters)
+
     w_dic[w] = ''.join(w_letters)
 
 for key_w, item_w in w_dic.items():
@@ -51,7 +49,7 @@ for key_w, item_w in w_dic.items():
     print(f'{w_len_str} - {w_len_str}')
 
     while not key_w == item_w:
-        numbs = input('input numbs from -> to: ')
+        numbs = input('move letters with numbers |from| [space] |to| :')
         n_list = numbs.split()
         try:
             n_from = int(n_list[0])
@@ -79,9 +77,9 @@ for key_w, item_w in w_dic.items():
         print(item_w.upper())
         print(f'{w_len_str}')
 
-    print('='*20)
+    print('='*50)
     print('Good!!!')
     print(f'{key_w.upper()} - {item_w.upper()}')
-    print('=' * 20)
+    print('=' * 50)
 
 print('-=GAME OVER=-')
