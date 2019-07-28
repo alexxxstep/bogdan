@@ -174,4 +174,4 @@ def read_note(login):
 
 
 if __name__ == '__main__':
-    choice_registration_login()+
+    choice_registration_login()
