@@ -1,8 +1,5 @@
 from  random import shuffle
 
-n = 1
-n_list = []
-
 class Number:
     def __init__(self):
         self._numb = 0
@@ -49,10 +46,15 @@ class Game:
             self.goal_variant.append(n_iner)
             
     def create_current_variant(self):
-        random_moves = Game.MOVES * 50
+        random_moves = Game.MOVES * 5
         shuffle(random_moves)
         
         self.current_variant = self.goal_variant.copy()
+        for i in range(4):
+            c_line = self.goal_variant[i].copy()
+            self.current_variant[i] = c_line
+            
+        
         
         for i in random_moves:
             self.move(i)      
@@ -65,6 +67,8 @@ class Game:
             print(f'| {x[0].name} | {x[1].name} | {x[2].name} | {x[3].name} |')
             if x == self.current_variant[3]:
                 print('-' * 21)
+                
+         
 
     def get_index_16(self):
         numb16 = 16
