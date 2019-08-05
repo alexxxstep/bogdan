@@ -1,4 +1,3 @@
-
 from  random import shuffle
 
 n = 1
@@ -50,7 +49,7 @@ class Game:
             self.goal_variant.append(n_iner)
             
     def create_current_variant(self):
-        random_moves = Game.MOVES * 2
+        random_moves = Game.MOVES * 50
         shuffle(random_moves)
         
         self.current_variant = self.goal_variant.copy()
