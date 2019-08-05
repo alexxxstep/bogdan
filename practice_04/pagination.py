@@ -195,14 +195,4 @@ class ManagerPagination:
             start = stop
             left -= count
 
-        # def main():
-
-
-
-# def main():
-#     manager = ManagerPagination()
-#
-#
-# if __name__ == '__main__':
-#     main()
 
