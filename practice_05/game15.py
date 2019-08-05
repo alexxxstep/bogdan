@@ -56,8 +56,7 @@ class Game:
         self.current_variant = self.goal_variant.copy()
         
         for i in random_moves:
-            self.move(i) 
-        
+            self.move(i)      
     
     
 
@@ -118,4 +117,11 @@ game = Game()
 game.create_goal_variant()
 game.create_current_variant()
 game.result_print()
+
+
+while not game.is_game_finished():
+    key_m = input('a <, d >, w A, s V :')
+    game.move(key_m, comm = True)
+    game.result_print()
+
  
