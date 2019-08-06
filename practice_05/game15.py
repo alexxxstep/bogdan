@@ -114,17 +114,21 @@ class Game:
             
             
    
+def main():
+    game = Game()
 
-game = Game()
-
-game.create_goal_variant()
-game.create_current_variant()
-game.result_print()
-
-
-while not game.is_game_finished():
-    key_m = input('a <, d >, w A, s V :')
-    game.move(key_m, comm = True)
+    game.create_goal_variant()
+    game.create_current_variant()
     game.result_print()
+
+
+    while not game.is_game_finished():
+        key_m = input('a <, d >, w A, s V :')
+        game.move(key_m, comm = True)
+        game.result_print()
+
+if __name__ == '__main__':
+    main()
+
 
  
