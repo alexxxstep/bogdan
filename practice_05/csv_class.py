@@ -94,9 +94,23 @@ class CSV_Manager:
         """принимает номер колонки и строки в виде списка из двух элементов,
         где первое значение - номер колонки, второе - номер строки.
         Может принимать *args подобных запросов и возвращать список значений, по указанным координатам."""
-
-        # x,y = args
-        pass
+        cells_list = []
+        
+        for cords in args:
+                       
+            try:
+                x,y  = cords[0], cords[1]             
+                line_x = self._data[x-1]
+                cell = line_x[y-1]                
+                cells_list.append(value)            
+ 
+            except:
+                continue
+                
+        return cells_list    
+        
+        
+         
 
     def add_header(self, name_column, no_column=None):
         """принимает аргумент в виде имени заголовка для новой колонки,
@@ -105,7 +119,29 @@ class CSV_Manager:
           Все значения для новой колонки, забиваются типом пустой строки ''.
           Учитываем, что '' - это пустое значение в csv файле Т.Е.
           ;; - между ними мы предполагаем ''."""
-        pass
+        
+        len_c =  self.len_column()
+        
+        if no_column and isinstance(no_column,int) and no_column!=len_c:
+            first_line = self._data[0]
+            first_line.insert(no_column-1,name_column)
+            
+            for line in self._data:
+                if line == first_line:
+                    continue
+                line.insert(no_column-1,'')
+        else:
+            first_line.append(name_column)
+            
+            for line in self._data:
+                if line == first_line:
+                    continue
+                line.append('')
+            
+             
+            
+            
+            
 
     def set_cell(self, list_xy, value):
         """принимает аргумент, в виде списка из двух значений
@@ -113,7 +149,20 @@ class CSV_Manager:
           где первое значение - имя колонки, второе - номер строки;
           вторым аргументом принимает значение для ячейки и устанавливает его.
           Не разрешает изменять первую строку, где находятся заголовки."""
-        pass
+        
+        try:
+             
+            x,y  = cords[0], cords[1]             
+            line_x = self._data[x-1]
+            line_x[y-1] =  value 
+            
+ 
+        except:
+            return None
+            
+         
+        
+         
 
     def add_line(self, list_line, no_line=None):
         """принимает список значений для строки и номер строки,
@@ -125,4 +174,3 @@ class CSV_Manager:
     def save(self):
         """сохраняет текущее состояние в объект файла, с указанным разделителем и в указанной кодировке."""
         pass
-
